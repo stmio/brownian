@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://b37x0csg2oeig"]
+
+[ext_resource type="Script" path="res://scripts/Container.cs" id="1_e5clo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fe1pu"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vbh02"]
+resource_local_to_scene = true
+normal = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_umkva"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2axmi"]
+normal = Vector2(0, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w7qas"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m04yq"]
+normal = Vector2(-1, 0)
+distance = -1152.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qn6m3"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c642n"]
+normal = Vector2(1, 0)
+
+[node name="Container" type="Node2D"]
+script = ExtResource("1_e5clo")
+
+[node name="Bounds" type="Node2D" parent="."]
+
+[node name="Top" type="StaticBody2D" parent="Bounds" groups=["bounds"]]
+physics_material_override = SubResource("PhysicsMaterial_fe1pu")
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Top"]
+shape = SubResource("WorldBoundaryShape2D_vbh02")
+
+[node name="Bottom" type="StaticBody2D" parent="Bounds" groups=["bounds"]]
+physics_material_override = SubResource("PhysicsMaterial_umkva")
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Bottom"]
+position = Vector2(1107, 648)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_2axmi")
+
+[node name="Right" type="StaticBody2D" parent="Bounds" groups=["bounds"]]
+physics_material_override = SubResource("PhysicsMaterial_w7qas")
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Right"]
+shape = SubResource("WorldBoundaryShape2D_m04yq")
+
+[node name="Left" type="StaticBody2D" parent="Bounds" groups=["bounds"]]
+physics_material_override = SubResource("PhysicsMaterial_qn6m3")
+
+[node name="Shape" type="CollisionShape2D" parent="Bounds/Left"]
+shape = SubResource("WorldBoundaryShape2D_c642n")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -140.0
+offset_top = -66.0
+offset_right = 1269.0
+offset_bottom = 701.0
+color = Color(0, 0, 0, 1)
