@@ -1,5 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 
+# Builds
+build/
+export_presets.cfg
+
+# Simulation output
 brownian.txt
-graph.png*
+graph*.png*

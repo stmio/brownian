@@ -10,7 +10,7 @@ data.append(0.0)
 kde = gaussian_kde(data)
 dist_space = linspace(min(data), max(data), 100)
 
-plt.xlim([0, max(data)])
+plt.xlim([0, 1500])
 plt.ylim([0, max(kde(dist_space)) + 0.0001])
 
 plt.xlabel("Speed (pixels per second)")
