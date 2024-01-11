@@ -6,8 +6,7 @@
 friction = 0.0
 bounce = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rcahm"]
-radius = 5.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7vixl"]
 
 [node name="Particle" type="RigidBody2D"]
 mass = 0.01
@@ -18,7 +17,10 @@ custom_integrator = true
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_6yvef")
-radius = 1
 
 [node name="Collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rcahm")
+shape = SubResource("CircleShape2D_7vixl")
+
+[node name="Trail" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0, 0, 1)

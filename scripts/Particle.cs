@@ -2,16 +2,29 @@ using Godot;
 using System;
 
 public partial class Particle : RigidBody2D {
-	[Export] int velocityFactor = 500;
-	[Export] int radius = 5;
+	[Export] float tempFactor = 500;
+	[Export] float radius = 5;
+	[Export] bool enableTrail = false;
+	
+	Line2D trail;
 	
 	public override void _Ready() {
+		if (!enableTrail) SetProcess(false);
+		else {
+			trail = GetNode<Line2D>("Trail");
+			trail.TopLevel = true;
+		}
+		
 		CollisionShape2D col = GetNode<CollisionShape2D>("Collider");
 		CircleShape2D colShape = col.Shape as CircleShape2D;
 		colShape.Radius = radius;
 		
-		SetRandomVelocity(velocityFactor);
+		SetRandomVelocity(tempFactor);
 		SetRandomPos(new Vector2(0, 0), new Vector2(1152, 648));
+	}
+	
+	public override void _Process(double delta) {
+		trail.AddPoint(Position);
 	}
 	
 	public override void _Draw() {

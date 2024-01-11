@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="brownian"
-run/main_scene="res://scenes/container.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+boot_splash/show_image=false
 
 [dotnet]
 

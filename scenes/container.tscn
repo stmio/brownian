@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b37x0csg2oeig"]
+[gd_scene load_steps=12 format=3 uid="uid://b37x0csg2oeig"]
 
 [ext_resource type="Script" path="res://scripts/Container.cs" id="1_e5clo"]
+[ext_resource type="PackedScene" uid="uid://d2gj3x7dkrbbm" path="res://scenes/particle.tscn" id="2_ssp1y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fe1pu"]
 friction = 0.0
@@ -31,6 +32,8 @@ bounce = 1.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_c642n"]
 normal = Vector2(1, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6og7m"]
 
 [node name="Container" type="Node2D"]
 script = ExtResource("1_e5clo")
@@ -64,8 +67,18 @@ physics_material_override = SubResource("PhysicsMaterial_qn6m3")
 shape = SubResource("WorldBoundaryShape2D_c642n")
 
 [node name="Background" type="ColorRect" parent="."]
-offset_left = -140.0
-offset_top = -66.0
-offset_right = 1269.0
-offset_bottom = 701.0
+offset_left = -10.0
+offset_top = -14.0
+offset_right = 1180.0
+offset_bottom = 676.0
 color = Color(0, 0, 0, 1)
+
+[node name="LargeParticle" parent="." instance=ExtResource("2_ssp1y")]
+position = Vector2(432, 219)
+mass = 0.05
+enableTrail = true
+
+[node name="Collider" parent="LargeParticle" index="0"]
+shape = SubResource("CircleShape2D_6og7m")
+
+[editable path="LargeParticle"]
